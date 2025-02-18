@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="booking.css">
+  <title>Book a Car</title>
+  <style>
+    /* Styling the link to look like a button */
+    .btn-link {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .btn-link:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-form">
+    <h2>Book a Car</h2>
+
+    <label for="start-date">Start Date</label>
+    <input type="date" id="start-date" name="start-date">
+
+    <label for="start-time">Start Time</label>
+    <select id="start-time" name="start-time">
+      <option value="">Select a time</option>
+    </select>
+
+    <label for="end-date">End Date</label>
+    <input type="date" id="end-date" name="end-date">
+
+    <label for="end-time">End Time</label>
+    <select id="end-time" name="end-time">
+      <option value="">Select a time</option>
+    </select>
+
+    <!-- Link styled as a button -->
+    <a href="payment_details.html" class="btn-link">Book Car</a>
+  </div>
+</body>
+</html>

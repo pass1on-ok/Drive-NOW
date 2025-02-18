@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Details</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .row input {
+      width: 100%;
+    }
+
+    /* Link styled as button */
+    .btn-pay {
+      display: block;
+      width: 100%;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-pay:hover {
+      background-color: #444;
+    }
+
+    .btn-pay::before {
+      content: "💳";
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <h2>Payment Details</h2>
+    <p>Enter your payment information to complete your car rental.</p>
+
+    <!-- Form Fields -->
+    <form action="#" method="POST">
+      <!-- Card Number -->
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+
+      <!-- Expiration Date and CVV -->
+      <div class="row">
+        <div>
+          <label for="exp-date">Expiration Date</label>
+          <input type="text" id="exp-date" placeholder="MM/YY" required>
+        </div>
+        <div>
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="123" required>
+        </div>
+      </div>
+
+      <!-- Cardholder Name -->
+      <label for="cardholder">Cardholder Name</label>
+      <input type="text" id="cardholder" placeholder="John Doe" required>
+
+      <!-- Billing Address -->
+      <label for="billing-address">Billing Address</label>
+      <input type="text" id="billing-address" placeholder="123 Main St" required>
+
+      <!-- City and State -->
+      <div class="row">
+        <div>
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="New York" required>
+        </div>
+        <div>
+          <label for="state">State</label>
+          <input type="text" id="state" placeholder="NY" required>
+        </div>
+      </div>
+
+      <!-- ZIP Code -->
+      <label for="zip">ZIP Code</label>
+      <input type="text" id="zip" placeholder="12345" required>
+
+      <!-- Pay Now Link -->
+      <a href="car_availability.html" class="btn-pay">Pay Now</a>
+    </form>
+  </div>
+</body>
+</html>
+
