@@ -1,0 +1,61 @@
+<header>
+    <div class="header-left">
+        <div class="logo">LOGO</div>
+    </div>
+    <div class="header-center">
+        <nav>
+            <ul>
+                <li><a routerLink="/fleet">Автопарк</a></li>
+                <li><a href="#">Объявления</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Частые вопросы</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header-right">
+        <span>Алматы</span>
+        <span>RU</span>
+        <button class="contact-btn">Связаться</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Быстрый выбор автомобилей с самой широкой выборкой в Алматы!</h1>
+        <p>Катайтесь на свежих машинах по всему Казахстану и за его пределы</p>
+        <div class="buttons">
+            <button class="btn red">Посмотреть Автопарк</button>
+            <button class="btn green">Написать в WhatsApp</button>
+            <button class="btn orange">Смотреть объявления</button>
+        </div>
+    </div>
+    <img src="assets/images/img1.png" alt="Автомобиль">
+</section>
+
+<section class="advantages">
+    <div *ngFor="let advantage of advantages" class="advantage">
+        <img [src]="advantage.icon" [alt]="advantage.title">
+        <h3>{{ advantage.title }}</h3>
+        <p>{{ advantage.description }}</p>
+    </div>
+</section>
+
+<section class="cars">
+    <div class="cars-header">
+        <h1>Прокат машин в Алматы</h1>
+        <p>Смотреть все</p>
+    </div>
+    <p>
+        Наш парк включает машины с различным объёмом двигателя, от экономичных до премиальных моделей.
+        Для городских поездок в наличии дешёвые варианты с минимальным расходом топлива, 
+        а для дальних путешествий — надёжные кроссоверы с большим баком.
+    </p>
+    <div class="car-list">
+        <app-car-card *ngFor="let car of cars"
+            [name]="car.name"
+            [description]="car.description"
+            [price]="car.price"
+            [imageUrl]="car.imageUrl">
+        </app-car-card>
+    </div>
+</section>

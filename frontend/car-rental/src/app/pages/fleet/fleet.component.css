@@ -1,0 +1,22 @@
+.cars {
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.cars-header h1 {
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.cars-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+.car-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
