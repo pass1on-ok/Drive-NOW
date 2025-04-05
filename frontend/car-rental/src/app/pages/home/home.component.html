@@ -24,7 +24,7 @@
         <h1>Быстрый выбор автомобилей с самой широкой выборкой в Алматы!</h1>
         <p>Катайтесь на свежих машинах по всему Казахстану и за его пределы</p>
         <div class="buttons">
-            <button class="btn red">Посмотреть Автопарк</button>
+            <button class="btn red" routerLink="/fleet">Посмотреть Автопарк</button>
             <button class="btn green">Написать в WhatsApp</button>
             <button class="btn orange">Смотреть объявления</button>
         </div>
@@ -51,11 +51,14 @@
         а для дальних путешествий — надёжные кроссоверы с большим баком.
     </p>
     <div class="car-list">
-        <app-car-card *ngFor="let car of cars"
-            [name]="car.name"
-            [description]="car.description"
-            [price]="car.price"
-            [imageUrl]="car.imageUrl">
+        <app-car-card *ngFor="let vehicle of vehicles"
+            [name]="vehicle.model"
+            [description]="vehicle.type"
+            [price]="vehicle.rentalPrice"
+            [imageUrl]="vehicle.image"
+            [vehicleID]="vehicle.vehicleID">
         </app-car-card>
+
+        
     </div>
 </section>

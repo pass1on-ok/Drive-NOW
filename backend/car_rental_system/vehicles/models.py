@@ -7,12 +7,35 @@ class Vehicle(models.Model):
         ('maintenance', 'Maintenance'),
     ]
 
+    BODY_TYPES = [
+        # Closed body types
+        ('Sedan', 'Sedan'),
+        ('Two-Door Sedan', 'Two-Door Sedan'),
+        ('Hatchback', 'Hatchback (Liftback)'),
+        ('Coupe', 'Coupe'),
+        ('Limousine', 'Limousine'),
+        ('Minivan', 'Minivan'),
+        ('Hardtop', 'Hardtop'),
+        ('Town Car', 'Town Car'),
+        ('Kombi', 'Kombi'),
+        ('Fastback', 'Fastback'),
+
+        # Open body types
+        ('Phaeton', 'Phaeton'),
+        ('Lando', 'Lando'),
+        ('Targa', 'Targa'),
+        ('Roadster', 'Roadster (Convertible, Spyder, Speedster)'),
+        ('Torpedo', 'Torpedo'),
+        ('Barchetta', 'Barchetta'),
+    ]
+
     vehicleID = models.AutoField(primary_key=True)
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
-    type = models.CharField(max_length=50)  # Например, "Car", "Bike", "SUV"
+    type = models.CharField(max_length=30, choices=BODY_TYPES, default='Sedan')  
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
     rentalPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='vehicle_images/', blank=True, null=True)
 
     def updateAvailability(self, status):
         self.status = status
@@ -30,8 +53,15 @@ class Vehicle(models.Model):
 
 
 class Car(Vehicle):
+    FUEL_TYPES = [
+        ('Petrol', 'Petrol'),
+        ('Diesel', 'Diesel'),
+        ('Electric', 'Electric'),
+        ('Hybrid', 'Hybrid'),
+        ('Hydrogen', 'Hydrogen'),
+    ]
     seatingCapacity = models.IntegerField()
-    fuelType = models.CharField(max_length=50)
+    fuelType = models.CharField(max_length=20, choices=FUEL_TYPES, default='Petrol')
 
     def calculateRentalPrice(self):
         return self.rentalPrice

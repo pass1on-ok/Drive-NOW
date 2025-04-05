@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import { CarService } from '../../services/car.service';
+import { Vehicle } from '../../services/car.service';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-fleet-details',
+  templateUrl: './fleet-details.component.html',
+  styleUrls: ['./fleet-details.component.css'],
+  standalone: true,
+  imports: [CommonModule]
+})
+export class FleetDetailsComponent implements OnInit {
+  vehicle: Vehicle | null = null;
+
+  constructor(private carService: CarService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const vehicleId = this.route.snapshot.paramMap.get('id');  // Должен быть параметр 'id'
+    console.log('Vehicle ID:', vehicleId);
+    if (vehicleId) {
+      this.carService.getVehicleById(vehicleId).subscribe(data => {
+        this.vehicle = data;
+      });
+    }
+  }
+}

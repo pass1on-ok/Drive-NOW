@@ -16,6 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from users.views import CustomTokenObtainPairView
+from users.views import RegisterView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +33,13 @@ urlpatterns = [
         path('bookings/', include('bookings.urls')),
         path('payments/', include('payments.urls')),
         path('reports/', include('reports.urls')),
+        path('auth/', include([
+
+            path('register/', RegisterView.as_view(), name='register'),
+            path('login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+            path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
         ])),
+    ])),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

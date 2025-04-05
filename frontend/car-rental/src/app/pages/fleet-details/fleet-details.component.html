@@ -1,0 +1,22 @@
+<section class="details-container" *ngIf="vehicle">
+  <div class="details-left">
+    <img [src]="vehicle.image" [alt]="vehicle.model" class="vehicle-main-image" />
+  </div>
+
+  <div class="details-right">
+    <h1>{{ vehicle.brand }} {{ vehicle.model }}</h1>
+    <div class="price">{{ vehicle.rentalPrice }} ₸ / сутки</div>
+
+    <ul class="vehicle-specs">
+      <li><strong>Тип:</strong> {{ vehicle.type }}</li>
+      <li><strong>Статус:</strong> {{ vehicle.status }}</li>
+      <li *ngIf="vehicle.description"><strong>Описание:</strong> {{ vehicle.description }}</li>
+    </ul>
+
+    <button class="book-btn">Забронировать</button>
+  </div>
+</section>
+
+<section *ngIf="!vehicle" class="loading">
+  <p>Загрузка информации о транспортном средстве...</p>
+</section>

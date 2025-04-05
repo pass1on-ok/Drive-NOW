@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarCardComponent } from '../../components/car-card/car-card.component';
 import { RouterModule } from '@angular/router';
-import { Car, CarService } from '../../services/car.service'; //
+import { Vehicle, CarService } from '../../services/car.service'; //
 
 @Component({
   selector: 'app-home',
@@ -19,11 +19,13 @@ export class HomeComponent {
     { icon: 'assets/images/icon4.png', title: 'Поддержка в дороге', description: 'Мы всегда на связи, где бы вы ни оказались' }
   ];
 
-  cars: Car[] = []; 
+  vehicles: Vehicle[] = []; 
 
   constructor(private carService: CarService) { }
 
-  ngOnInit() {
-    this.cars = this.carService.getCars().slice(0, 4);
+  ngOnInit(): void {
+    this.carService.getVehicles().subscribe(data => {
+      this.vehicles = data.slice(0, 4);
+    });
   }
 }

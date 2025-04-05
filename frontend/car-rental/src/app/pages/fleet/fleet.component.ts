@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarCardComponent } from '../../components/car-card/car-card.component';
-import { Car, CarService } from '../../services/car.service';
+import { Vehicle, CarService } from '../../services/car.service';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-fleet',
   templateUrl: './fleet.component.html',
   styleUrls: ['./fleet.component.css'],
   standalone: true,
-  imports: [CommonModule, CarCardComponent]
+  imports: [CommonModule, CarCardComponent, RouterModule]
 })
-export class FleetComponent {
-  cars: Car[] = [];
+export class FleetComponent implements OnInit {
+  cars: Vehicle[] = [];
 
-  constructor(private carService: CarService) { }
+  constructor(private carService: CarService) {}
 
-  ngOnInit() {
-    this.cars = this.carService.getCars();
+  ngOnInit(): void {
+    this.carService.getVehicles().subscribe(data => {
+      this.cars = data;
+    });
   }
 }

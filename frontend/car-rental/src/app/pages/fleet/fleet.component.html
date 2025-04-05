@@ -1,15 +1,16 @@
 <section class="cars">
-    <div class="cars-header">
-        <h1>Наш автопарк</h1>
-        <p>Выберите автомобиль для аренды</p>
-    </div>
+  <div class="cars-header">
+    <h1>Наш автопарк</h1>
+    <p>Выберите автомобиль для аренды</p>
+  </div>
 
-    <div class="car-list">
-        <app-car-card *ngFor="let car of cars"
-            [name]="car.name"
-            [description]="car.description"
-            [price]="car.price"
-            [imageUrl]="car.imageUrl">
-        </app-car-card>
-    </div>
+  <div class="car-list">
+    <app-car-card *ngFor="let car of cars"
+      [name]="car.brand + ' ' + car.model"
+      [description]="car.type"
+      [price]="car.rentalPrice"
+      [imageUrl]="car.image"
+      [vehicleID]="car.vehicleID">
+    </app-car-card>
+  </div>
 </section>
