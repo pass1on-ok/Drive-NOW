@@ -268,3 +268,16 @@ nav ul li a:hover {
         align-items: center;
     }
 }
+
+.header-right a img {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .header-right a img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+  }

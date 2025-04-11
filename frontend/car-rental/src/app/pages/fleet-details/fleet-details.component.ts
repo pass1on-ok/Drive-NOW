@@ -17,7 +17,7 @@ export class FleetDetailsComponent implements OnInit {
   constructor(private carService: CarService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const vehicleId = this.route.snapshot.paramMap.get('id');  // Должен быть параметр 'id'
+    const vehicleId = this.route.snapshot.paramMap.get('id');  
     console.log('Vehicle ID:', vehicleId);
     if (vehicleId) {
       this.carService.getVehicleById(vehicleId).subscribe(data => {
