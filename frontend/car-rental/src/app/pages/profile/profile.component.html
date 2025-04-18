@@ -1,0 +1,51 @@
+<div class="cover"></div>
+
+<div class="profile-box" *ngIf="profileForm">
+  <div class="avatar-section">
+    <img src="https://cdn0.iconfinder.com/data/icons/team-work-and-organization-2/128/78-1024.png" alt="Аватар">
+  </div>
+
+  <h2>{{ profileForm.value.name || 'Пользователь' }}</h2>
+  <p class="location">{{ profileForm.value.address || 'Ваш адрес' }}</p>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>Имя пользователя</h4>
+        <input formControlName="username" type="text" readonly />
+      </div>
+      <div class="info-card">
+        <h4>Email</h4>
+        <input formControlName="email" type="email" readonly />
+      </div>
+      <div class="info-card">
+        <h4>Имя</h4>
+        <input formControlName="name" type="text" />
+      </div>
+      <div class="info-card">
+        <h4>Телефон</h4>
+        <input formControlName="phoneNumber" type="text" />
+      </div>
+      <div class="info-card">
+        <h4>Адрес</h4>
+        <input formControlName="address" type="text" />
+      </div>
+      <div class="info-card">
+        <h4>Тип пользователя</h4>
+        <select formControlName="userType">
+          <option value="customer">Клиент</option>
+          <option value="fleet_manager">Менеджер автопарка</option>
+          <option value="admin">Администратор</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <!-- <button type="submit" [disabled]="profileForm.invalid">Сохранить изменения</button> -->
+      <button class="my-bookings-btn" (click)="goToBookings()">Мои бронирования</button>
+      <button *ngIf="!isEditing" type="button" (click)="enableEditing()">Изменить данные профиля</button>
+      <button *ngIf="isEditing" type="submit" [disabled]="profileForm.invalid">Сохранить изменения</button>
+      <button class="my-payments-btn" (click)="goToPayments()">Мои платежи</button>
+    </div>
+  </form>
+</div>

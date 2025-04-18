@@ -11,13 +11,15 @@ export interface Vehicle {
   rentalPrice: number;
   image: string;
   description?: string;
+  fuelType?: string;
+  seatingCapacity?: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = 'http://127.0.0.1:8000/api/vehicles/vehicles/';
+  private apiUrl = 'http://127.0.0.1:8000/api/vehicles/cars/';
 
   constructor(private http: HttpClient) {}
 

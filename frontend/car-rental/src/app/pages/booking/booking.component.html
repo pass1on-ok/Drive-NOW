@@ -1,0 +1,27 @@
+<div class="booking-container">
+    <h2>Бронирование автомобиля</h2>
+  
+    <div *ngIf="vehicle" class="vehicle-info">
+      <h3>Вы бронируете:</h3>
+      <p><strong>Марка:</strong> {{ vehicle.brand }}</p>
+      <p><strong>Модель:</strong> {{ vehicle.model }}</p>
+      <p><strong>Цена за сутки:</strong> {{ vehicle.rentalPrice }} ₸</p>
+    </div>
+  
+    <form (ngSubmit)="submitBooking()">
+      <div class="form-group">
+        <label for="start">Дата начала:</label>
+        <input type="date" id="start" [(ngModel)]="booking.startDate" name="startDate" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="end">Дата окончания:</label>
+        <input type="date" id="end" [(ngModel)]="booking.endDate" name="endDate" required>
+      </div>
+  
+      <button type="submit">Забронировать</button>
+    </form>
+  
+    <p *ngIf="message" class="message">{{ message }}</p>
+  </div>
+  

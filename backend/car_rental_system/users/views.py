@@ -1,4 +1,4 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, permissions
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.decorators import action
@@ -9,6 +9,8 @@ from .serializers import (
     UserSerializer, CustomerSerializer, FleetManagerSerializer, 
     AdminSerializer, CustomTokenObtainPairSerializer, RegisterSerializer
 )
+from rest_framework.views import APIView
+from rest_framework import status
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -37,3 +39,23 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+
+class UserMeView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        serializer = UserSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def patch(self, request):
+        serializer = UserSerializer(request.user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

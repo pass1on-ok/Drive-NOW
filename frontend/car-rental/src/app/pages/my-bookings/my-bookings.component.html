@@ -1,0 +1,21 @@
+<div class="my-bookings-container">
+  <h2>Мои бронирования</h2>
+
+  <div *ngIf="bookings.length === 0">
+    <p>У вас нет бронирований.</p>
+  </div>
+
+  <div *ngFor="let booking of bookings" class="booking-card">
+    <h3>Бронирование #{{ booking.id }}</h3>
+    <p><strong>Дата начала:</strong> {{ booking.startDate }}</p>
+    <p><strong>Дата окончания:</strong> {{ booking.endDate }}</p>
+
+    <div *ngIf="booking.vehicle">
+      <p><strong>Автомобиль:</strong> {{ booking.vehicle.brand }} {{ booking.vehicle.model }}</p>
+      <p><strong>Цена:</strong> {{ booking.vehicle.rentalPrice }} ₸</p>
+    </div>
+    <div *ngIf="!booking.vehicle">
+      <p>Информация о автомобиле недоступна.</p>
+    </div>
+  </div>
+</div>

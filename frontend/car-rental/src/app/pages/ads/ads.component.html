@@ -1,0 +1,17 @@
+<header class="ads-header">
+    <h1>Объявления об аренде</h1>
+    <p>Выберите выгодное предложение от владельцев автомобилей</p>
+  </header>
+  
+  <section class="ads-list">
+    <div class="ad-card" *ngFor="let ad of ads">
+      <img [src]="ad.image" [alt]="ad.brand">
+      <div class="ad-info">
+        <h3>{{ ad.brand + ad.model }}</h3>
+        <p>{{ ad.description }}</p>
+        <span class="price">{{ ad.rentalPrice }} ₸ / сутки</span>
+        <button [routerLink]="['/fleet', ad.vehicleID]">Подробнее</button>
+      </div>
+    </div>
+  </section>
+  

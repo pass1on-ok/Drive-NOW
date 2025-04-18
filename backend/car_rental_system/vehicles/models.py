@@ -19,6 +19,7 @@ class Vehicle(models.Model):
         ('Town Car', 'Town Car'),
         ('Kombi', 'Kombi'),
         ('Fastback', 'Fastback'),
+        ('Crossover', 'Crossover'),
 
         # Open body types
         ('Phaeton', 'Phaeton'),

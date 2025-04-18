@@ -1,0 +1,39 @@
+<div class="auth-box">
+  <img src="https://img.icons8.com/ios-filled/100/car-rental.png" alt="Car Icon">
+  <h1>CarRental</h1>
+  <p>Создайте аккаунт, чтобы арендовать авто</p>
+  
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <input formControlName="username" type="text" placeholder="Username" required>
+    <input formControlName="first_name" type="text" placeholder="First Name" required>
+    <input formControlName="last_name" type="text" placeholder="Last Name" required>
+    <input formControlName="email" type="email" placeholder="Email" required>
+    <input formControlName="name" type="text" placeholder="Full Name" required>
+    <input formControlName="phoneNumber" type="tel" placeholder="Phone Number" required>
+    <input formControlName="address" type="text" placeholder="Address" required>
+    <label for="userType">Тип пользователя</label>
+  <select id="userType" formControlName="userType" class="form-control">
+    <option value="customer">Customer</option>
+    <option value="fleet_manager">Fleet Manager</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <div *ngIf="registerForm.get('userType')?.invalid && registerForm.get('userType')?.touched">
+    <small class="text-danger">Пожалуйста, выберите тип пользователя.</small>
+  </div>
+    <input formControlName="password" type="password" placeholder="Password" required>
+    <input formControlName="confirmPassword" type="password" placeholder="Confirm Password" required>
+    <button type="submit">Register</button>
+    <a href="/login">Already registered? Login</a>
+  </form>
+  <pre>{{ registerForm.status }}</pre>
+  
+
+  <!-- Ошибки -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="registerForm.get('confirmPassword')?.hasError('mismatch')">
+    <small class="text-danger">Пароли не совпадают.</small>
+  </div>
+</div>
+

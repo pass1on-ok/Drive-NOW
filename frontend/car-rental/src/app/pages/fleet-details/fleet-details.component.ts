@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from '../../services/car.service';
 import { Vehicle } from '../../services/car.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,12 +9,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './fleet-details.component.html',
   styleUrls: ['./fleet-details.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterModule]
 })
 export class FleetDetailsComponent implements OnInit {
   vehicle: Vehicle | null = null;
+  selectedVehicleID: number | null = null;
 
-  constructor(private carService: CarService, private route: ActivatedRoute) {}
+  constructor(private carService: CarService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const vehicleId = this.route.snapshot.paramMap.get('id');  
@@ -24,5 +25,9 @@ export class FleetDetailsComponent implements OnInit {
         this.vehicle = data;
       });
     }
+  }
+  openBooking(vehicleID: number) {
+    // навигация на страницу бронирования
+    this.router.navigate(['/booking'], { queryParams: { vehicleID } });
   }
 }

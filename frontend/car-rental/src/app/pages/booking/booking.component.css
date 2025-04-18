@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .booking-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+  }
+  
+  .booking-container h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .booking-container .vehicle-info {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+  }
+  
+  .booking-container .vehicle-info h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .booking-container .vehicle-info p {
+    font-size: 1.1em;
+    margin: 8px 0;
+    color: #666;
+  }
+  
+  .booking-container .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .booking-container label {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .booking-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .booking-container input[type="date"]:focus {
+    border-color: #d35400;
+    outline: none;
+  }
+  
+  .booking-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #d35400;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-container button:hover {
+    background-color: #e67e22;
+  }
+  
+  .booking-container .message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #e67e22;
+    text-align: center;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 600px) {
+    .booking-container {
+      padding: 15px;
+    }
+  
+    .booking-container h2 {
+      font-size: 1.5em;
+    }
+  
+    .booking-container .vehicle-info h3 {
+      font-size: 1.3em;
+    }
+  
+    .booking-container button {
+      font-size: 1.1em;
+    }
+  }
+  

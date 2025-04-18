@@ -1,0 +1,14 @@
+<div class="login-wrapper">
+<div class="auth-box">
+  <img src="https://img.icons8.com/ios-filled/100/000000/car-rental.png" alt="Car Rental Icon">
+  <h1>CarRental</h1>
+  <p class="subtitle">Войдите, чтобы арендовать авто в Алматы</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="username" placeholder="Username" required>
+    <input type="password" formControlName="password" placeholder="Пароль" required>
+    <button type="submit" [disabled]="loginForm.invalid">Войти</button>
+    <p class="link">Нет аккаунта? <a routerLink="/register">Зарегистрироваться</a></p>
+  </form>
+</div>
+</div>

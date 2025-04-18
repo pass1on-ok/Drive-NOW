@@ -1,0 +1,25 @@
+.my-bookings-container {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .booking-card {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .booking-card h3 {
+    margin: 0;
+    font-size: 1.4em;
+  }
+  
+  .booking-card p {
+    font-size: 1.1em;
+    margin: 8px 0;
+  }
+  

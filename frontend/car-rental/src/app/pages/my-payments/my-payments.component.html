@@ -1,0 +1,28 @@
+<div class="payments-container" *ngIf="payments.length; else noPaymentsTpl">
+    <h2>Мои платежи</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Метод оплаты</th>
+          <th>Сумма</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments">
+          <td>{{ payment.paymentDate | date:'short' }}</td>
+          <td>{{ payment.paymentMethod }}</td>
+          <td>{{ payment.amount | currency: 'TNG' }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<ng-template #noPaymentsTpl>
+  <div class="no-payments-message">
+    <p>❗ У вас нет платежей.</p>
+  </div>
+</ng-template>
+
+<div *ngIf="message" class="error-message">{{ message }}</div>

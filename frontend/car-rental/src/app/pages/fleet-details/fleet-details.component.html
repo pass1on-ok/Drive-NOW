@@ -1,19 +1,32 @@
-<section class="details-container" *ngIf="vehicle">
-  <div class="details-left">
-    <img [src]="vehicle.image" [alt]="vehicle.model" class="vehicle-main-image" />
+<header class="car-header">
+  <h1>{{ vehicle?.brand }} {{ vehicle?.model }}</h1>
+  <p>Узнайте подробности о вашем будущем автомобиле для аренды</p>
+</header>
+
+<section class="car-details" *ngIf="vehicle">
+  <div class="car-images">
+    <img [src]="vehicle.image" [alt]="vehicle.model">
   </div>
 
-  <div class="details-right">
-    <h1>{{ vehicle.brand }} {{ vehicle.model }}</h1>
-    <div class="price">{{ vehicle.rentalPrice }} ₸ / сутки</div>
+  <div class="car-info">
+    <h2>Обзор автомобиля</h2>
+    <p><strong>Описание:</strong> {{ vehicle.description || 'Описание недоступно. Обновите позже.' }}</p>
 
-    <ul class="vehicle-specs">
-      <li><strong>Тип:</strong> {{ vehicle.type }}</li>
-      <li><strong>Статус:</strong> {{ vehicle.status }}</li>
-      <li *ngIf="vehicle.description"><strong>Описание:</strong> {{ vehicle.description }}</li>
+    <h3>Характеристики:</h3>
+    <ul>
+      <li>Тип кузова: {{ vehicle.type }}</li>
+      <li>Топливо: {{ vehicle.fuelType || 'Не указано' }}</li>
+      <li>Вместимость: {{ vehicle.seatingCapacity || 'Не указана' }} мест</li>
+      <li>Статус: {{ vehicle.status }}</li>
     </ul>
 
-    <button class="book-btn">Забронировать</button>
+    <span class="price">{{ vehicle.rentalPrice }} ₸ / сутки</span>
+
+    <div class="buttons">
+      <button (click)="openBooking(vehicle.vehicleID)">Забронировать</button>
+      <!-- <app-booking *ngIf="selectedVehicleID" [vehicleID]="selectedVehicleID"></app-booking> -->
+      <button routerLink="">Вернуться на главную</button>
+    </div>
   </div>
 </section>
 

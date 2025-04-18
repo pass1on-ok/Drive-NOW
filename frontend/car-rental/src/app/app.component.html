@@ -1,1 +1,38 @@
+<header>
+    <div class="header-left">
+        <a routerLink="" class="logo">
+            <img src="https://img.icons8.com/ios-filled/100/000000/car-rental.png" alt="Car Rental Icon">
+          </a>
+
+    </div>
+    <div class="header-center">
+        <nav>
+            <ul>
+                <li><a routerLink="fleet">Автопарк</a></li>
+                <li><a href="ads">Объявления</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Частые вопросы</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header-right">
+        <span>Алматы</span>
+        <span>RU</span>
+
+        <a routerLink="login" title="Вход">
+            <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" alt="Вход" />
+        </a>
+        <a routerLink="register" title="Регистрация">
+            <img src="https://img.icons8.com/ios-glyphs/30/plus-math.png" alt="Регистрация" />
+        </a>
+        <a *ngIf="isLoggedIn" routerLink="profile" title="Мой профиль">
+            <img src="https://img.icons8.com/ios-filled/30/user-folder.png" alt="Мой профиль" />
+          </a>
+        <a *ngIf="isLoggedIn" (click)="logout()" title="Выход">
+            <img src="https://img.icons8.com/ios-glyphs/30/exit.png" alt="Выход" />
+          </a>
+        <button class="contact-btn">Связаться</button>
+    </div>
+</header>
+  
 <router-outlet></router-outlet>
