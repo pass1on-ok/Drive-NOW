@@ -31,34 +31,22 @@ Car Rental System is a web application for car rentals, including a frontend bui
 
 To get started, clone the repository:
 
-```bash
+```
 git clone https://github.com/pass1on-ok/Car-Rental-System.git
 Navigate to the project directory:
 
-bash
-Копировать
-Редактировать
 cd Car-Rental-System
 2. Install and run the frontend
 Install dependencies:
 Go to the frontend directory:
 
-bash
-Копировать
-Редактировать
 cd frontend
 Install the dependencies:
 
-bash
-Копировать
-Редактировать
 npm install
 Run the frontend:
 To start the frontend in development mode, run:
 
-bash
-Копировать
-Редактировать
 ng serve
 The app will be available at http://localhost:4200.
 
@@ -66,35 +54,23 @@ The app will be available at http://localhost:4200.
 Install dependencies:
 Go to the backend directory:
 
-bash
-Копировать
-Редактировать
 cd backend
 Create a virtual environment:
 
-bash
-Копировать
-Редактировать
 python -m venv venv
 source venv/bin/activate  # For Windows: venv\Scripts\activate
 Install the dependencies:
 
-bash
-Копировать
-Редактировать
+
 pip install -r requirements.txt
 Run the backend:
 Run database migrations:
 
-bash
-Копировать
-Редактировать
+
 python manage.py migrate
 Start the server:
 
-bash
-Копировать
-Редактировать
+
 python manage.py runserver
 The API will be available at http://localhost:8000.
 
@@ -143,30 +119,19 @@ Development
 Running Tests
 For frontend tests:
 
-bash
-Копировать
-Редактировать
 ng test
 For backend tests:
 
-bash
-Копировать
-Редактировать
 python manage.py test
 Linting
 To check code quality with linters, run:
 
 For frontend:
 
-bash
-Копировать
-Редактировать
 ng lint
 For backend:
 
-bash
-Копировать
-Редактировать
+
 flake8 .
 CI/CD Pipeline
 For automatic deployment and testing, use GitHub Actions or GitLab CI. CI/CD configuration files can be found in the .github/workflows or .gitlab-ci.yml directories.
