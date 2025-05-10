@@ -33,29 +33,15 @@ export class PaymentService {
     return this.http.post(this.apiUrl, data);
   }
 
-  // getPaymentsByUser(userID: number): Observable<any[]> {
-  //   const token = this.authService.getAuthToken(); // Получаем токен из AuthService
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); // Добавляем токен в заголовок
-
-  //   return this.http.get<any[]>(`${this.apiUrl}?userID=${userID}`, { headers });
-  // }
-  // getPaymentsByUser(userID: number): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.apiUrl}?customer=${userID}`);
-  // }
-
   getAllPayments(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-  getPaymentsByUser(userID: number): Observable<Payment[]> {
-    return this.http.get<Payment[]>(`${this.apiUrl}?customer=${userID}`);
+  getPaymentsByUser(): Observable<Payment[]> {
+    return this.http.get<Payment[]>('http://localhost:8000/api/payments/my-payments/');
   }
 
-  // Получить все бронирования для пользователя
-  getBookingsByUser(userID: number): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.apiUrlBookings}?customerID=${userID}`);
+  getBookingsByUser(): Observable<Booking[]> {
+    return this.http.get<Booking[]>('http://localhost:8000/api/bookings/my-bookings/');
   }
 
-  // getPaymentsByUser(userID: number): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.apiUrl}?customer=${userID}`);
-  // }
 }

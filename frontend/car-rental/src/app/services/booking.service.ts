@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { StorageHelperService } from './storage-helper.service';
 import { tap } from 'rxjs/operators';
+import { Vehicle } from './car.service';
 
 export interface Booking {
   bookingID?: number;
   customer: number;
-  vehicle: number;
+  vehicle_id: number;
   startDate: string;
   endDate: string;
   totalAmount?: number;
@@ -19,6 +20,7 @@ export interface Booking {
 })
 export class BookingService {
   private apiUrl = 'http://localhost:8000/api/bookings/bookings/';
+  private apiUrl2 = 'http://127.0.0.1:8000/api/bookings/';
 
   constructor(private http: HttpClient, private storageHelper: StorageHelperService) {}
 
@@ -26,9 +28,6 @@ export class BookingService {
     return this.http.post<Booking>(this.apiUrl, booking);
   }
 
-  getUserBookings(customerId: number): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.apiUrl}?customer=${customerId}`);
-  }
 
   getBooking(id: number): Observable<Booking> {
     return this.http.get<Booking>(`${this.apiUrl}${id}/`);
@@ -36,33 +35,7 @@ export class BookingService {
   }
 
   getBookingsByUser(): Observable<Booking[]> {
-    const userData = this.storageHelper.getItem('user');
-    if (!userData) {
-      console.error('User data not found in localStorage');
-      return of([]);
-    }
-  
-    let userId: number;
-    try {
-      const parsedUser = JSON.parse(userData);
-      userId = parsedUser?.userID;
-    } catch (e) {
-      console.error('Error parsing user data from localStorage:', e);
-      return of([]);
-    }
-  
-    const token = this.storageHelper.getItem('token');
-    if (!token) {
-      console.error('No token found, user not authenticated!');
-      return of([]);
-    }
-  
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Booking[]>(`${this.apiUrl}?customer=${userId}`, { headers }).pipe(
-      tap(data => {
-        console.log('Bookings from API:', data);
-      })
-    );
+    return this.http.get<Booking[]>('http://localhost:8000/api/bookings/my-bookings/');
   }
 
   getBookings(): Observable<any[]> {

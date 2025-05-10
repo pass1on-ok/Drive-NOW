@@ -1,0 +1,22 @@
+<div class="fleet-dashboard">
+  <h2>🚗 Управляемые автомобили</h2>
+
+  <div *ngIf="message" class="info-message">{{ message }}</div>
+
+  <div *ngFor="let vehicle of vehicles" class="vehicle-card">
+    <div class="vehicle-image">
+      <img [src]="vehicle.image" alt="{{ vehicle.brand }} {{ vehicle.model }}" />
+    </div>
+
+    <div class="vehicle-info">
+      <h3>{{ vehicle.brand }} {{ vehicle.model }}</h3>
+      <p><strong>Тип:</strong> {{ vehicle.type }}</p>
+      <p><strong>Статус:</strong> {{ vehicle.status }}</p>
+
+      <div class="vehicle-actions">
+        <button class="btn btn-maintain" (click)="updateStatus(vehicle.id, 'maintenance')">🔧 Назначить обслуживание</button>
+        <button class="btn btn-delete" (click)="remove(vehicle.id)">🗑️ Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>

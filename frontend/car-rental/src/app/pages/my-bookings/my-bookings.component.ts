@@ -16,18 +16,14 @@ export class MyBookingsComponent implements OnInit {
   constructor(private bookingService: BookingService) {}
 
   ngOnInit(): void {
-    this.bookingService.getBookingsByUser().subscribe(
-      (data) => {
-        console.log('Bookings from service:', data);
+    this.bookingService.getBookingsByUser().subscribe({
+      next: (data) => {
         this.bookings = data;
-        if (this.bookings.length === 0) {
-          this.message = 'У вас нет бронирований.';
-        }
+        this.message = this.bookings.length ? '' : '❗ У вас нет бронирований.';
       },
-      (error) => {
-        console.error('Error fetching bookings:', error);
-        this.message = 'Ошибка при загрузке бронирований.';
+      error: (error) => {
+        this.message = '❗ Не удалось загрузить бронирования.';
       }
-    );
+    });
   }
 }

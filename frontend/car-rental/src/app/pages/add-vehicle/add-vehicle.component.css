@@ -1,0 +1,39 @@
+.add-vehicle-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #fff;
+  }
+  
+  .add-vehicle-form h2 {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .add-vehicle-form label {
+    display: block;
+    margin: 10px 0 4px;
+  }
+  
+  .add-vehicle-form input,
+  .add-vehicle-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-vehicle-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

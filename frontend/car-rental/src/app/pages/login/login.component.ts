@@ -19,13 +19,14 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
   }
+
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -36,10 +37,14 @@ export class LoginComponent {
 
     this.authService.login(username, password).subscribe(
       (res) => {
-        this.router.navigate(['/profile']); // После логина перенаправляем в профиль
+        this.router.navigate(['/profile']); 
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
       },
       (err) => {
         this.errorMessage = 'Неверный логин или пароль';
+        alert('Invalid username or password');
       }
     );
   }

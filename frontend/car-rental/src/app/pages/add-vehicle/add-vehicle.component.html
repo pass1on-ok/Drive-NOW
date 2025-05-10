@@ -1,0 +1,60 @@
+<div class="add-vehicle-form">
+    <h2>Добавить автомобиль</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>Марка:</label>
+      <input type="text" formControlName="brand" />
+  
+      <label>Модель:</label>
+      <input type="text" formControlName="model" />
+  
+      <label>Кузов:</label>
+<select formControlName="type">
+  <option value="Sedan">Sedan</option>
+  <option value="Two-Door Sedan">Two-Door Sedan</option>
+  <option value="Hatchback">Hatchback (Liftback)</option>
+  <option value="Coupe">Coupe</option>
+  <option value="Limousine">Limousine</option>
+  <option value="Minivan">Minivan</option>
+  <option value="Hardtop">Hardtop</option>
+  <option value="Town Car">Town Car</option>
+  <option value="Kombi">Kombi</option>
+  <option value="Fastback">Fastback</option>
+  <option value="Crossover">Crossover</option>
+
+  <option value="Phaeton">Phaeton</option>
+  <option value="Lando">Lando</option>
+  <option value="Targa">Targa</option>
+  <option value="Roadster">Roadster (Convertible, Spyder, Speedster)</option>
+  <option value="Torpedo">Torpedo</option>
+  <option value="Barchetta">Barchetta</option>
+</select>
+  
+      <label>Статус:</label>
+      <select formControlName="status">
+        <option value="available">Available</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="rented">Rented</option>
+      </select>
+  
+      <label>Цена аренды:</label>
+      <input type="number" formControlName="rentalPrice" />
+  
+      <label>Изображение:</label>
+      <input type="file" formControlName="image" (change)="onFileChange($event)" />
+  
+      <label>Количество мест:</label>
+      <input type="number" formControlName="seatingCapacity" />
+  
+      <label>Тип топлива:</label>
+      <select formControlName="fuelType">
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electric">Electric</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Hydrogen">Hydrogen</option>
+      </select>
+  
+      <button type="submit">Создать</button>
+    </form>
+  </div>
+  

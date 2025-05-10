@@ -16,7 +16,7 @@ import { AuthService } from '../../services/auth.service';
 export class BookingComponent implements OnInit {
   booking: Booking = {
     customer: 0,
-    vehicle: 0,
+    vehicle_id: 0,
     startDate: '',
     endDate: '',
   };
@@ -55,7 +55,7 @@ export class BookingComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const id = params['vehicleID'];
       if (id) {
-        this.booking.vehicle = +id;
+        this.booking.vehicle_id = +id;
         this.vehicleID = +id;
 
         this.carService.getVehicleById(id).subscribe(data => {

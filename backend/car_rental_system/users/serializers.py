@@ -60,7 +60,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ["username", "first_name", "last_name", "email", "name", "phoneNumber", "address", "userType", "password"]
 
     def create(self, validated_data):
-        print(f"Password before hashing: {validated_data['password']}")  # 🔍 Вывод пароля до хеширования
+        print(f"Password before hashing: {validated_data['password']}")
         if User.objects.filter(phoneNumber=validated_data["phoneNumber"]).exists():
             raise serializers.ValidationError("This phone number is already in use.")
         user = User(

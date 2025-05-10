@@ -12,6 +12,8 @@ import { Component } from '@angular/core';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
+import { FleetDashboardComponent } from './pages/fleet-dashboard/fleet-dashboard.component';
+import { AddVehicleComponent } from './pages/add-vehicle/add-vehicle.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,5 +28,7 @@ export const routes: Routes = [
   { path: 'my-bookings', component: MyBookingsComponent},
   { path: 'payment', component: PaymentComponent},
   { path: 'my-payments', component: MyPaymentsComponent},
+  { path: 'fleet-manager/dashboard', component: FleetDashboardComponent},
+  { path: 'add-vehicle', component: AddVehicleComponent},
   { path: '**', redirectTo: '' }
 ];

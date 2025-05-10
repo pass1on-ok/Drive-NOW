@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { StorageHelperService } from './storage-helper.service';
 import { FormGroup } from '@angular/forms';
 
@@ -27,8 +27,11 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     return this.http.post(this.apiUrl + 'login/', { username, password }).pipe(
       tap((res: any) => {
+        
         this.storageHelper.setItem('token', res.access); 
         this.storageHelper.setItem('user', JSON.stringify(res.user));
+
+        
       })
     );
   }
@@ -39,6 +42,8 @@ export class AuthService {
 
   logout(): void {
     this.storageHelper.removeItem('token');  
+//
+    this.storageHelper.removeItem('user');
   }
 
   isAuthenticated(): boolean {
@@ -57,23 +62,35 @@ export class AuthService {
       }
     });
   }
-  // updateProfile(data: FormGroup): Observable<User> {
-  //   const token = this.getToken();
-  //   const headers = token ? { Authorization: `Bearer ${token}` } : {};
-  
-  //   return this.http.put<User>(this.apiUrl2 + 'me/', data.getRawValue(), { headers });
-  // }
-
-  // updateProfile(data: Partial<User>): Observable<User> {
-  //   return this.http.put<User>(this.apiUrl2 + 'me/', data);
-  // }
 
   getToken(): string | null {
     return this.storageHelper.getItem('token'); 
   }
-  // private tokenKey = 'authToken';
 
-  // getAuthToken(): string | null {
-  //   return localStorage.getItem(this.tokenKey);  // Получаем токен из localStorage
-  // }
+//   getCurrentUser(): User | null {
+//     const user = this.storageHelper.getItem('user');
+//     console.log(user);
+//     return user ? JSON.parse(user) : null; // Если user не существует, вернуть null
+// }
+
+  getUserRole(): Observable<string | null> {
+  const token = this.getToken();
+  if (!token) return of(null);
+
+  return this.http.get<User>(this.apiUrl2 + 'me/', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).pipe(
+    map(user => {
+      this.storageHelper.setItem('user', JSON.stringify(user)); // Обновляем localStorage
+      return user.userType;
+    }),
+    catchError(() => of(null))
+  );
+}
+
+
+
+
 }

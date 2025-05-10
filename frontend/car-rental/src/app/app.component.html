@@ -12,6 +12,13 @@
                 <li><a href="ads">Объявления</a></li>
                 <li><a href="#">Отзывы</a></li>
                 <li><a href="#">Частые вопросы</a></li>
+
+                <li *ngIf="isFleetManager">
+                    <a routerLink="fleet-manager/dashboard">Панель управления</a>
+                </li>
+                <li *ngIf="isFleetManager">
+                    <a routerLink="add-vehicle">Добавить автомобиль</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -19,18 +26,19 @@
         <span>Алматы</span>
         <span>RU</span>
 
-        <a routerLink="login" title="Вход">
-            <img src="https://img.icons8.com/ios-glyphs/30/user--v1.png" alt="Вход" />
+        <a *ngIf="!isLoggedIn" routerLink="login" title="Вход">
+            <img src="assets/images/login.png" alt="Вход" class="icon-img" />
         </a>
-        <a routerLink="register" title="Регистрация">
-            <img src="https://img.icons8.com/ios-glyphs/30/plus-math.png" alt="Регистрация" />
+        <a *ngIf="!isLoggedIn" routerLink="register" title="Регистрация">
+            <img src="assets/images/register.png" alt="Регистрация" class="icon-img" />
         </a>
+        
         <a *ngIf="isLoggedIn" routerLink="profile" title="Мой профиль">
-            <img src="https://img.icons8.com/ios-filled/30/user-folder.png" alt="Мой профиль" />
-          </a>
+            <img src="assets/images/Profile.png" alt="Мой профиль" class="icon-img" />
+        </a>
         <a *ngIf="isLoggedIn" (click)="logout()" title="Выход">
-            <img src="https://img.icons8.com/ios-glyphs/30/exit.png" alt="Выход" />
-          </a>
+            <img src="assets/images/Logout.png" alt="Выход" class="icon-img" />
+        </a>
         <button class="contact-btn">Связаться</button>
     </div>
 </header>

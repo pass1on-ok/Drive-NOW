@@ -1,0 +1,93 @@
+.fleet-dashboard {
+  padding: 40px 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7fa;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.info-message {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  padding: 12px 20px;
+  border-left: 4px solid #1967d2;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.vehicle-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: transform 0.2s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-4px);
+}
+
+.vehicle-image img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-right: 1px solid #eee;
+}
+
+.vehicle-info {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.vehicle-info h3 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.vehicle-info p {
+  margin: 6px 0;
+  color: #555;
+  font-size: 15px;
+}
+
+.vehicle-actions {
+  margin-top: 16px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-maintain {
+  background-color: #17a2b8;
+  color: #fff;
+  margin-right: 12px;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
