@@ -210,6 +210,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
+    "https://car-rental-system-4na0.onrender.com",
 ]
 
 import logging
