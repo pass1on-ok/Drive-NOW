@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i_w7wul-+91-p0x15a33j4hq$qi88s#^n-$_9)k+q*v=@lxnbz'
+import os
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# SECRET_KEY = 'django-insecure-i_w7wul-+91-p0x15a33j4hq$qi88s#^n-$_9)k+q*v=@lxnbz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+# DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['your-backend-app-name.onrender.com', 'localhost']
 
 
 # Application definition
@@ -104,17 +106,22 @@ WSGI_APPLICATION = 'car_rental_system.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'drivenow',
-        'USER': 'postgres',
-        'PASSWORD': 'kumar',
-        'HOST': 'localhost',  # Если база данных на той же машине
-        'PORT': '5432',  # Стандартный порт для PostgreSQL
-    }
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'drivenow',
+#         'USER': 'postgres',
+#         'PASSWORD': 'kumar',
+#         'HOST': 'localhost',  # Если база данных на той же машине
+#         'PORT': '5432',  # Стандартный порт для PostgreSQL
+#     }
+# }
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -153,6 +160,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS = [
 #     BASE_DIR / "car_rental_system/frontend",
 # ]
