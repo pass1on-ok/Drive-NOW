@@ -1,0 +1,21 @@
+{
+  "PROFILE": {
+    "TITLE": "Profile",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "NAME": "Name",
+    "PHONE": "Phone",
+    "ADDRESS": "Address",
+    "USER_TYPE": "User Type",
+    "MY_BOOKINGS": "My Bookings",
+    "MY_PAYMENTS": "My Payments",
+    "EDIT": "Edit Profile",
+    "SAVE": "Save Changes",
+    "FLEET_DASHBOARD": "Fleet Dashboard",
+    "ADD_CAR": "Add Car"
+  },
+
+  "HOME": "Home",
+  "FLEET": "Fleet",
+  "ADS": "Ads"
+}

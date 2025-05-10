@@ -6,30 +6,36 @@
   </div>
 
   <div *ngFor="let booking of bookings" class="booking-card">
+    <div class="booking-content">
+      <div class="booking-image">
+        <img [src]="booking.vehicle.image" alt="Фото автомобиля" width="150" height="100" />
+      </div>
 
-    <p><strong>Дата бронирования:</strong> {{ booking.bookingDate | date: 'short' }}</p>
-    <p><strong>Дата начала:</strong> {{ booking.startDate }}</p>
-    <p><strong>Дата окончания:</strong> {{ booking.endDate }}</p>
-    <p>
-      <strong>Статус:</strong>
-      <span [ngClass]="{
-        'status-confirmed': booking.status === 'confirmed',
-        'status-pending': booking.status === 'pending',
-        'status-cancelled': booking.status !== 'confirmed' && booking.status !== 'pending'
-      }">
-        {{ booking.status }}
-      </span>
-    </p>
-    <p><strong>Общая сумма:</strong> {{ booking.totalAmount }} ₸</p>
+      <div class="booking-details">
+        <p><strong>Дата бронирования:</strong> {{ booking.bookingDate | date: 'short' }}</p>
+        <p><strong>Дата начала:</strong> {{ booking.startDate }}</p>
+        <p><strong>Дата окончания:</strong> {{ booking.endDate }}</p>
+        <p>
+          <strong>Статус:</strong>
+          <span [ngClass]="{
+            'status-confirmed': booking.status === 'confirmed',
+            'status-pending': booking.status === 'pending',
+            'status-cancelled': booking.status !== 'confirmed' && booking.status !== 'pending'
+          }">
+            {{ booking.status }}
+          </span>
+        </p>
+        <p><strong>Общая сумма:</strong> {{ booking.totalAmount }} ₸</p>
 
-    <div *ngIf="booking.vehicle">
-      <p><strong>Автомобиль:</strong> {{ booking.vehicle.brand }} {{ booking.vehicle.model }} ({{ booking.vehicle.type }})</p>
-      <p><strong>Цена за сутки:</strong> {{ booking.vehicle.rentalPrice }} ₸</p>
-      <img [src]="booking.vehicle.image" alt="Фото автомобиля" width="300" height="200" />
-    </div>
+        <div *ngIf="booking.vehicle">
+          <p><strong>Автомобиль:</strong> {{ booking.vehicle.brand }} {{ booking.vehicle.model }} ({{ booking.vehicle.type }})</p>
+          <p><strong>Цена за сутки:</strong> {{ booking.vehicle.rentalPrice }} ₸</p>
+        </div>
 
-    <div *ngIf="!booking.vehicle">
-      <p>Информация о автомобиле недоступна.</p>
+        <div *ngIf="!booking.vehicle">
+          <p>Информация о автомобиле недоступна.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,9 @@
         <p>Катайтесь на свежих машинах по всему Казахстану и за его пределы</p>
         <div class="buttons">
             <button class="btn red" routerLink="/fleet">Посмотреть Автопарк</button>
-            <button class="btn green">Написать в WhatsApp</button>
+            <button class="btn green" (click)="openWhatsApp()">
+  Связаться с Администрацией
+</button>
             <button class="btn orange" routerLink="ads">Смотреть объявления</button>
         </div>
     </div>

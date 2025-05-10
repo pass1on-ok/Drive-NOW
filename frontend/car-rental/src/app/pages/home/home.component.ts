@@ -28,4 +28,12 @@ export class HomeComponent {
       this.vehicles = data.slice(0, 4);
     });
   }
+  openWhatsApp(): void {
+  const phone = '77073592980'; // без +
+  const message = 'Здравствуйте! Хочу арендовать авто';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+
 }

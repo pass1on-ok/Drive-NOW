@@ -26,6 +26,8 @@ export class MyPaymentsComponent implements OnInit {
     this.loadPayments();
   }
 
+  
+
   loadPayments(): void {
     this.paymentService.getPaymentsByUser().subscribe({
       next: (data) => {

@@ -1,48 +1,65 @@
 .my-bookings-container {
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .booking-card {
-    background: #f9f9f9;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  }
-  
-  .booking-card h3 {
-    margin: 0;
-    font-size: 1.4em;
-  }
-  
-  .booking-card p {
-    font-size: 1.1em;
-    margin: 8px 0;
-  }
-  
-  .status-confirmed {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .status-pending {
-    color: orange;
-    font-weight: bold;
-  }
-  
-  .status-cancelled {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .booking-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.booking-card {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.booking-card h3 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.booking-card p {
+  font-size: 1.1em;
+  margin: 8px 0;
+}
+
+.status-confirmed {
+  color: green;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-cancelled {
+  color: red;
+  font-weight: bold;
+}
+
+.booking-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.booking-image img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 250px;  /* Увеличение ширины */
+  height: 150px; /* Увеличение высоты */
+}
+
+.booking-details {
+  flex: 1;
+}
+
+.booking-details p {
+  margin: 5px 0;
+}
+
+.booking-card .booking-details {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,78 @@
+<div class="card-form-container">
+  <h2>💳 Оплата картой</h2>
+
+  <p class="amount">Сумма к оплате: <strong>{{ amount | currency: 'TNG' }}</strong></p>
+
+  <form (ngSubmit)="submitCardPayment()" #paymentForm="ngForm" novalidate>
+    <div class="form-group">
+      <label>Номер карты</label>
+      <input
+        [(ngModel)]="cardNumber"
+        name="cardNumber"
+        required
+        maxlength="19"
+        pattern="^(\d{4}[\s-]?){4}$"
+        placeholder="0000 0000 0000 0000"
+        #cardNumberRef="ngModel"
+      />
+      <div class="error" *ngIf="cardNumberRef.invalid && cardNumberRef.touched">
+        Введите корректный номер из 16 цифр
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Имя владельца</label>
+      <input
+        [(ngModel)]="cardHolder"
+        name="cardHolder"
+        required
+        pattern="^[A-Za-zА-Яа-яЁё\s]+$"
+        placeholder="ИМЯ ФАМИЛИЯ"
+        #cardHolderRef="ngModel"
+      />
+      <div class="error" *ngIf="cardHolderRef.invalid && cardHolderRef.touched">
+        Только буквы и пробелы
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half">
+        <label>Срок действия (MM/YY)</label>
+        <input
+          [(ngModel)]="expiry"
+          name="expiry"
+          required
+          maxlength="5"
+          pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+          placeholder="12/25"
+          #expiryRef="ngModel"
+        />
+        <div class="error" *ngIf="expiryRef.invalid && expiryRef.touched">
+          Формат MM/YY, например 09/26
+        </div>
+      </div>
+
+      <div class="form-group half">
+        <label>CVC</label>
+        <input
+          [(ngModel)]="cvc"
+          name="cvc"
+          required
+          maxlength="3"
+          pattern="^\d{3}$"
+          placeholder="123"
+          #cvcRef="ngModel"
+        />
+        <div class="error" *ngIf="cvcRef.invalid && cvcRef.touched">
+          Введите 3 цифры
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="loading || paymentForm.invalid">
+      {{ loading ? 'Обработка...' : 'Оплатить' }}
+    </button>
+  </form>
+
+  <p class="message" *ngIf="message">{{ message }}</p>
+</div>

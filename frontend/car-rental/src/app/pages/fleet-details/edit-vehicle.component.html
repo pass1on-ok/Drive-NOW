@@ -1,0 +1,38 @@
+<section *ngIf="vehicleForm" class="edit-vehicle-form">
+  <h2>Редактировать автомобиль</h2>
+
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <label for="brand">Марка</label>
+    <input id="brand" formControlName="brand" type="text" placeholder="Введите марку автомобиля">
+
+    <label for="model">Модель</label>
+    <input id="model" formControlName="model" type="text" placeholder="Введите модель автомобиля">
+
+    <label for="type">Тип кузова</label>
+    <input id="type" formControlName="type" type="text" placeholder="Введите тип кузова">
+
+    <label for="fuelType">Топливо</label>
+    <input id="fuelType" formControlName="fuelType" type="text" placeholder="Введите тип топлива">
+
+    <label for="seatingCapacity">Вместимость</label>
+    <input id="seatingCapacity" formControlName="seatingCapacity" type="number" placeholder="Введите вместимость">
+
+    <label for="rentalPrice">Цена аренды</label>
+    <input id="rentalPrice" formControlName="rentalPrice" type="number" placeholder="Введите цену аренды">
+
+    <label for="status">Статус</label>
+    <select id="status" formControlName="status">
+      <option value="available">Доступен</option>
+      <option value="rented">Занят</option>
+      <option value="maintenance">На обслуживании</option>
+    </select>
+
+    <button type="submit" [disabled]="vehicleForm.invalid">Сохранить</button>
+  </form>
+
+  <p *ngIf="error" class="error">{{ error }}</p>
+</section>
+
+<section *ngIf="loading">
+  <p>Загрузка...</p>
+</section>

@@ -37,4 +37,7 @@ export class CarService {
   createVehicle(data: any): Observable<any> {
     return this.http.post(this.apiUrl, data);
   }
+  updateVehicle(id: number, vehicle: Partial<Vehicle>) {
+  return this.http.patch(`${this.apiUrl}${id}/`, vehicle); // ✅ PATCH
+}
 }

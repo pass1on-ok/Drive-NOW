@@ -4,8 +4,13 @@
 </header>
 
 <section class="car-details" *ngIf="vehicle">
-  <div class="car-images">
-    <img [src]="vehicle.image" [alt]="vehicle.model">
+  <div class="car-gallery">
+    <img [src]="vehicle.image" [alt]="vehicle.model" class="car-main-image">
+    <div class="car-thumbnails">
+      <img [src]="vehicle.image" [alt]="vehicle.model" class="thumbnail">
+      <!-- Add more images if available -->
+      <img [src]="vehicle.image" [alt]="vehicle.model" class="thumbnail">
+    </div>
   </div>
 
   <div class="car-info">
@@ -23,9 +28,9 @@
     <span class="price">{{ vehicle.rentalPrice }} ₸ / сутки</span>
 
     <div class="buttons">
-      <button (click)="openBooking(vehicle.vehicleID)">Забронировать</button>
-      <!-- <app-booking *ngIf="selectedVehicleID" [vehicleID]="selectedVehicleID"></app-booking> -->
-      <button routerLink="">Вернуться на главную</button>
+      <button (click)="openBooking(vehicle.vehicleID)" class="primary-btn">Забронировать</button>
+      <button *ngIf="isFleetManager && vehicle?.vehicleID" (click)="editVehicle(vehicle.vehicleID)" class="secondary-btn">Редактировать</button>
+      <button routerLink="/" class="tertiary-btn">Вернуться на главную</button>
     </div>
   </div>
 </section>

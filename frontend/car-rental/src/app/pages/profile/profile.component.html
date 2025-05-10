@@ -41,11 +41,20 @@
     </div>
 
     <div class="action-buttons">
+
+      <ng-container *ngIf="userProfile?.userType === 'fleet_manager'; else customerButtons">
+      <button type="button" (click)="goToAddCar()">Добавить авто</button>
+      <button type="button" (click)="goToDashboard()">Панель управления</button>
+      </ng-container>
       <!-- <button type="submit" [disabled]="profileForm.invalid">Сохранить изменения</button> -->
-      <button class="my-bookings-btn" (click)="goToBookings()">Мои бронирования</button>
+       <ng-template #customerButtons>
+    <button class="my-bookings-btn" (click)="goToBookings()">Мои бронирования</button>
+    <button class="my-payments-btn" (click)="goToPayments()">Мои платежи</button>
+    </ng-template>
+      <!-- <button class="my-bookings-btn" (click)="goToBookings()">Мои бронирования</button> -->
       <button *ngIf="!isEditing" type="button" (click)="enableEditing()">Изменить данные профиля</button>
       <button *ngIf="isEditing" type="submit" [disabled]="profileForm.invalid">Сохранить изменения</button>
-      <button class="my-payments-btn" (click)="goToPayments()">Мои платежи</button>
+      <!-- <button class="my-payments-btn" (click)="goToPayments()">Мои платежи</button> -->
     </div>
   </form>
 </div>

@@ -1,0 +1,85 @@
+/* Основной стиль для формы */
+.edit-vehicle-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок формы */
+.edit-vehicle-form h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Стили для меток и инпутов */
+.edit-vehicle-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Стили для инпутов и селектов */
+.edit-vehicle-form input[type="text"],
+.edit-vehicle-form input[type="number"],
+.edit-vehicle-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+/* Подсветка инпута при фокусе */
+.edit-vehicle-form input:focus,
+.edit-vehicle-form select:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Кнопка "Сохранить" */
+.edit-vehicle-form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-vehicle-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Изменение цвета кнопки при наведении */
+.edit-vehicle-form button:hover {
+  background-color: #45a049;
+}
+
+/* Стиль для сообщений об ошибках */
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Стиль для секции загрузки */
+section[ngIf="loading"] {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}

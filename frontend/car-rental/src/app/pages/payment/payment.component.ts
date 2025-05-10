@@ -47,21 +47,42 @@ export class PaymentComponent {
       }
     });
   }
-
   pay() {
-    if (!this.amount || this.amount <= 0) {
-      this.message = '❗ Убедитесь, что сумма платежа указана правильно.';
-      return;
-    }
+  if (this.method === 'Card') {
+    this.router.navigate(['/card-payment'], {
+      queryParams: { bookingID: this.bookingID, amount: this.amount }
+    });
+    return;
+  }
+  if (this.method === 'Bank Transfer') {
+    this.router.navigate(['/bank-transfer-payment'], {
+      queryParams: { bookingID: this.bookingID, amount: this.amount }
+    });
+    return;
+  }
 
-    this.loading = true;
-    this.message = '';
+  // Остальные методы (наличные, перевод)
+  this.loading = true;
+  const data = {
+    booking: this.bookingID,
+    amount: this.amount,
+    paymentMethod: this.method,
+  };
 
-    const data = {
-      booking: this.bookingID, // ID бронирования
-      amount: this.amount,      // Сумма из бронирования
-      paymentMethod: this.method, // Метод оплаты
-    };
+  // pay() {
+  //   if (!this.amount || this.amount <= 0) {
+  //     this.message = '❗ Убедитесь, что сумма платежа указана правильно.';
+  //     return;
+  //   }
+
+  //   this.loading = true;
+  //   this.message = '';
+
+  //   const data = {
+  //     booking: this.bookingID, // ID бронирования
+  //     amount: this.amount,      // Сумма из бронирования
+  //     paymentMethod: this.method, // Метод оплаты
+  //   };
 
     // Отправляем запрос на создание платежа
     this.paymentService.makePayment(data).subscribe({
@@ -73,7 +94,7 @@ export class PaymentComponent {
         this.bookingService.updateBookingStatus(this.bookingID, 'confirmed').subscribe({
           next: () => {
             setTimeout(() => {
-              this.router.navigate(['/profile']); // Перенаправление на страницу профиля
+              this.router.navigate(['/my-payments']); // Перенаправление на страницу профиля
             }, 2000);
           },
           error: () => {

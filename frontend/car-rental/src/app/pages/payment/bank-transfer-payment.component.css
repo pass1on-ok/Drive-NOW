@@ -1,0 +1,116 @@
+.payment-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.payment-container h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #34495e;
+  font-weight: 600;
+  text-align: center;
+}
+
+.payment-info {
+  text-align: center;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.amount {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.amount p {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.bank-details {
+  background-color: #f4f6f7;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bank-details label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bank-details input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #34495e;
+}
+
+.bank-details input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 30px;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.message, .loading, .error-message {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.message {
+  color: #27ae60;
+}
+
+.loading {
+  color: #f39c12;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+.invalid {
+  border: 2px solid red;
+  outline: none;
+  transition: border-color 0.3s ease;
+}

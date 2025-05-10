@@ -1,0 +1,43 @@
+<div class="payment-container" *ngIf="bookingID; else errorTpl">
+  <h2>💳 Банковский перевод</h2>
+
+  <p class="payment-info">Вы собираетесь оплатить бронирование <strong>#{{ bookingID }}</strong></p>
+
+  <div *ngIf="amount" class="amount">
+    <p><strong>Сумма к оплате:</strong> {{ amount | currency: 'TNG' }}</p>
+  </div>
+
+  <div class="bank-details">
+    <label for="accountNumber">Номер счета:</label>
+<input
+  id="accountNumber"
+  [(ngModel)]="accountNumber"
+  placeholder="Введите номер счета"
+  type="text"
+  maxlength="16"
+  minlength="16"
+  pattern="\\d{16}"
+  title="Номер счета должен содержать ровно 16 цифр"
+  [ngClass]="{'invalid': accountNumber && !isAccountNumberValid()}"
+/>
+<div class="error-text" *ngIf="accountNumber && !isAccountNumberValid()">
+  ❗ Номер счета должен содержать ровно 16 цифр.
+</div>
+    
+
+    <label for="bankName">Название банка:</label>
+    <input id="bankName" [(ngModel)]="bankName" placeholder="Введите название банка" />
+
+    <label for="accountHolder">Держатель счета:</label>
+    <input id="accountHolder" [(ngModel)]="accountHolder" placeholder="Введите имя держателя счета" />
+  </div>
+
+  <div class="message" *ngIf="message">{{ message }}</div>
+  <div class="loading" *ngIf="loading">⏳ Обработка оплаты...</div>
+
+  <button (click)="submitBankTransferPayment()">Оплатить</button>
+</div>
+
+<ng-template #errorTpl>
+  <div class="error-message">❗ Не удалось загрузить ID бронирования для оплаты.</div>
+</ng-template>

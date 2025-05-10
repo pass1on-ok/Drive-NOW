@@ -14,6 +14,9 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { MyPaymentsComponent } from './pages/my-payments/my-payments.component';
 import { FleetDashboardComponent } from './pages/fleet-dashboard/fleet-dashboard.component';
 import { AddVehicleComponent } from './pages/add-vehicle/add-vehicle.component';
+import { CardPaymentComponent } from './pages/payment/card-payment.component';
+import { BankTransferPaymentComponent } from './pages/payment/bank-transfer-payment.component';
+import { EditVehicleComponent } from './pages/fleet-details/edit-vehicle.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,5 +33,8 @@ export const routes: Routes = [
   { path: 'my-payments', component: MyPaymentsComponent},
   { path: 'fleet-manager/dashboard', component: FleetDashboardComponent},
   { path: 'add-vehicle', component: AddVehicleComponent},
+  { path: 'card-payment', component: CardPaymentComponent},
+  { path: 'bank-transfer-payment', component: BankTransferPaymentComponent},
+  { path: 'fleet/edit/:id', component: EditVehicleComponent },
   { path: '**', redirectTo: '' }
 ];

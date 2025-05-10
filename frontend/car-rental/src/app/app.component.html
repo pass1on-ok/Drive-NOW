@@ -10,8 +10,7 @@
             <ul>
                 <li><a routerLink="fleet">Автопарк</a></li>
                 <li><a href="ads">Объявления</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#">Частые вопросы</a></li>
+                
 
                 <li *ngIf="isFleetManager">
                     <a routerLink="fleet-manager/dashboard">Панель управления</a>
@@ -24,7 +23,6 @@
     </div>
     <div class="header-right">
         <span>Алматы</span>
-        <span>RU</span>
 
         <a *ngIf="!isLoggedIn" routerLink="login" title="Вход">
             <img src="assets/images/login.png" alt="Вход" class="icon-img" />
@@ -39,7 +37,7 @@
         <a *ngIf="isLoggedIn" (click)="logout()" title="Выход">
             <img src="assets/images/Logout.png" alt="Выход" class="icon-img" />
         </a>
-        <button class="contact-btn">Связаться</button>
+        <button class="contact-btn" (click)="openWhatsApp()">Связаться</button>
     </div>
 </header>
   

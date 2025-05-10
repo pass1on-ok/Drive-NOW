@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    // Получаем данные профиля и инициализируем форму
     this.authService.getUserProfile().subscribe(
       (data) => {
         this.userProfile = data;
@@ -61,8 +60,7 @@ export class ProfileComponent implements OnInit {
     this.authService.updateProfile(updatedData).subscribe(
       () => {
         alert('Профиль обновлён');
-        this.isEditing = false;  // После сохранения выключаем режим редактирования
-        // Блокируем поля после сохранения
+        this.isEditing = false; 
         this.profileForm.get('name')?.disable();
         this.profileForm.get('phoneNumber')?.disable();
         this.profileForm.get('address')?.disable();
@@ -72,38 +70,18 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  // onSubmit() {
-  //   if (this.profileForm.invalid) return;
-  
-  //   const updatedData = this.profileForm.getRawValue();
-  
-  //   this.authService.updateProfile(updatedData).subscribe(
-  //     () => alert('Профиль обновлён'),
-  //     () => alert('Ошибка при обновлении профиля')
-  //   );
-  // }
-
-  // onSubmit() {
-  //   if (this.profileForm.invalid) {
-  //     return;
-  //   }
-
-  //   const updatedData = this.profileForm.value;
-  //   this.authService.updateProfile(updatedData).subscribe(
-  //     (res) => {
-  //       alert('Профиль обновлен');
-  //     },
-  //     (err) => {
-  //       alert('Ошибка при обновлении профиля');
-  //     }
-  //   );
-  // }
-
   goToBookings() {
-    // Перенаправляем пользователя на страницу "Мои бронирования"
     this.router.navigate(['/my-bookings']);
   }
   goToPayments() {
     this.router.navigate(['/my-payments']);
   }
+
+  goToAddCar() {
+  this.router.navigate(['/add-vehicle']);
+}
+
+  goToDashboard() {
+  this.router.navigate(['/fleet-manager/dashboard']);
+}
 }

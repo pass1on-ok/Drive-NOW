@@ -1,23 +1,25 @@
 <div class="payment-container" *ngIf="bookingID; else errorTpl">
-    <h2>💳 Оплата бронирования</h2>
-    
-    <p>Вы собираетесь оплатить бронирование #{{ bookingID }}</p>
-    
-    <div *ngIf="booking">
-      <p><strong>Сумма к оплате:</strong> {{ booking.totalAmount | currency: 'TNG' }}</p> <!-- Отображаем сумму с форматированием в валюту -->
-    </div>
-    
-    <label for="method">Метод оплаты:</label>
-    <select id="method" [(ngModel)]="method">
-      <option value="Card">Карта</option>
-      <option value="Cash">Наличные</option>
-      <option value="Bank Transfer">Банковский перевод</option>
-    </select>
-    
-    <button (click)="pay()">Оплатить</button>
+  <h2>💳 Оплата бронирования</h2>
+
+  <p>Вы собираетесь оплатить бронирование <strong>#{{ bookingID }}</strong></p>
+
+  <div *ngIf="booking">
+    <p><strong>Сумма к оплате:</strong> {{ booking.totalAmount | currency: 'TNG' }}</p>
   </div>
-  
-  <ng-template #errorTpl>
-    <div class="error-message">❗ Не удалось загрузить ID бронирования для оплаты.</div>
-  </ng-template>
-  
+
+  <label for="method">Выберите метод оплаты:</label>
+  <select id="method" [(ngModel)]="method">
+    <option value="Card">Карта</option>
+    <option value="Cash">Наличные</option>
+    <option value="Bank Transfer">Банковский перевод</option>
+  </select>
+
+  <div class="message" *ngIf="message">{{ message }}</div>
+  <div class="loading" *ngIf="loading">⏳ Обработка оплаты...</div>
+
+  <button (click)="pay()">Оплатить</button>
+</div>
+
+<ng-template #errorTpl>
+  <div class="error-message">❗ Не удалось загрузить ID бронирования для оплаты.</div>
+</ng-template>

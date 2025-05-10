@@ -45,4 +45,12 @@ export class AppComponent implements OnInit {
     
   }
 
+  openWhatsApp(): void {
+  const phone = '77073592980'; // без +
+  const message = 'Здравствуйте! Хочу арендовать авто';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+}
+
+
 }

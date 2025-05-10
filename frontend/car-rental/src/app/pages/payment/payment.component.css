@@ -1,56 +1,71 @@
 .payment-container {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 24px;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-  }
-  
-  .payment-container h2 {
-    margin-bottom: 16px;
-    color: #333;
-  }
-  
-  .payment-container label {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
-  }
-  
-  .payment-container select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .payment-container button {
-    margin-top: 24px;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .payment-container button:hover {
-    background-color: #45a049;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 50px;
-    font-size: 18px;
-  }
-  
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f9f9fb;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.payment-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.payment-container p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+  color: red;
+}
+
+.message {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.loading {
+  margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+}
