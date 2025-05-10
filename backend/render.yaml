@@ -2,7 +2,10 @@ services:
   - type: web
     name: car-rental-backend
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+
     startCommand: gunicorn car_rental_system.wsgi:application
     envVars:
       - key: DJANGO_SECRET_KEY
