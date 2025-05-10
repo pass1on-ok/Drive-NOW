@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { StorageHelperService } from './storage-helper.service';
 import { FormGroup } from '@angular/forms';
-
+import { environment } from '../../environments/environment'
 // Интерфейс для User
 export interface User {
   userID: number;
@@ -19,8 +19,10 @@ export interface User {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000/api/auth/';
-  private apiUrl2 = 'http://localhost:8000/api/users/users/';
+  // private apiUrl = 'http://localhost:8000/api/auth/';
+  // private apiUrl2 = 'http://localhost:8000/api/users/users/';
+  private apiUrl = `${environment.apiUrl}/auth/`; 
+  private apiUrl2 = `${environment.apiUrl}/users/users/`;
 
   constructor(private http: HttpClient, private storageHelper: StorageHelperService) {}
 
@@ -62,10 +64,20 @@ export class AuthService {
       }
     });
   }
-
+  // getToken(): string | null {
+  //   // Проверяем, что localStorage доступен
+  //   if (typeof window !== 'undefined' && window.localStorage) {
+  //     return localStorage.getItem('auth_token');
+  //   }
+  //   return null;
+  // }
   getToken(): string | null {
-    return this.storageHelper.getItem('token'); 
-  }
+  return this.storageHelper.getItem('token');  // ✅ вместо 'auth_token'
+}
+
+  // getToken(): string | null {
+  //   return this.storageHelper.getItem('token'); 
+  // }
 
 //   getCurrentUser(): User | null {
 //     const user = this.storageHelper.getItem('user');

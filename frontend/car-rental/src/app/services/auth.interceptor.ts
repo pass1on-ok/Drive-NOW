@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
+import { environment } from '../../environments/environment'
 
 export const authInterceptorFn: HttpInterceptorFn = (
     req: HttpRequest<any>,

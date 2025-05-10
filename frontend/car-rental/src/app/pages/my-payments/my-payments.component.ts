@@ -21,23 +21,41 @@ export class MyPaymentsComponent implements OnInit {
     private datePipe: DatePipe,
     private currencyPipe: CurrencyPipe
   ) {}
-
   ngOnInit(): void {
-    this.loadPayments();
-  }
+  this.loadPayments();
+}
+
+loadPayments(): void {
+  this.paymentService.getPaymentsByUser().subscribe({
+    next: (data) => {
+      this.payments = data;
+      this.message = this.payments.length ? '' : '❗ У вас нет платежей.';
+    },
+    error: (error) => {
+      if (error.status !== 401) {
+      console.error("Ошибка при загрузке платежей:", error);
+    }
+      this.message = '❗ Не удалось загрузить платежи. Убедитесь, что вы авторизованы.';
+    }
+  });
+}
+
+  // ngOnInit(): void {
+  //   this.loadPayments();
+  // }
 
   
 
-  loadPayments(): void {
-    this.paymentService.getPaymentsByUser().subscribe({
-      next: (data) => {
-        this.payments = data;
-        this.message = this.payments.length ? '' : '❗ У вас нет платежей.';
-      },
-      error: (error) => {
-        console.error('Ошибка при загрузке платежей:', error);
-        this.message = '❗ Не удалось загрузить платежи.';
-      }
-    });
-  }
+  // loadPayments(): void {
+  //   this.paymentService.getPaymentsByUser().subscribe({
+  //     next: (data) => {
+  //       this.payments = data;
+  //       this.message = this.payments.length ? '' : '❗ У вас нет платежей.';
+  //     },
+  //     error: (error) => {
+  //       console.error('Ошибка при загрузке платежей:', error);
+  //       this.message = '❗ Не удалось загрузить платежи.';
+  //     }
+  //   });
+  // }
 }

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { StorageHelperService } from './storage-helper.service';
 import { tap } from 'rxjs/operators';
 import { Vehicle } from './car.service';
+import { environment } from '../../environments/environment'
 
 export interface Booking {
   bookingID?: number;
@@ -19,8 +20,9 @@ export interface Booking {
   providedIn: 'root'
 })
 export class BookingService {
-  private apiUrl = 'http://localhost:8000/api/bookings/bookings/';
-  private apiUrl2 = 'http://127.0.0.1:8000/api/bookings/';
+  private apiUrl = `${environment.apiUrl}/bookings/bookings/`;
+  // private apiUrl2 = 'http://127.0.0.1:8000/api/bookings/';
+  private apiUrl2 = `${environment.apiUrl}/bookings/`;
 
   constructor(private http: HttpClient, private storageHelper: StorageHelperService) {}
 
@@ -35,7 +37,7 @@ export class BookingService {
   }
 
   getBookingsByUser(): Observable<Booking[]> {
-    return this.http.get<Booking[]>('http://localhost:8000/api/bookings/my-bookings/');
+    return this.http.get<Booking[]>(`${environment.apiUrl}/bookings/my-bookings/`);
   }
 
   getBookings(): Observable<any[]> {
