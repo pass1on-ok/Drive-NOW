@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Vehicle(models.Model):
     STATUS_CHOICES = [
@@ -36,7 +37,8 @@ class Vehicle(models.Model):
     type = models.CharField(max_length=30, choices=BODY_TYPES, default='Sedan')  
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
     rentalPrice = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='vehicle_images/', blank=True, null=True)
+    # image = models.ImageField(upload_to='vehicle_images/', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
 
     def updateAvailability(self, status):
         self.status = status

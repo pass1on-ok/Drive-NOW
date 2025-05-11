@@ -34,7 +34,7 @@ export class CarService {
         ...v,
         image: v.image.startsWith('http')
           ? v.image
-          : `${environment.mediaUrl}${v.image}` // <== добавь эту строку
+          : `${environment.mediaUrl}vehicle_images/${v.image}` // <== добавь эту строку
       }))
     )
   );

@@ -21,19 +21,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECRET_KEY = 'django-insecure-i_w7wul-+91-p0x15a33j4hq$qi88s#^n-$_9)k+q*v=@lxnbz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-# ALLOWED_HOSTS = ['https://drivenow-g8je.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['https://drivenow-g8je.onrender.com', 'localhost']
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret-key')
+# SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret-key')
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+# ALLOWED_HOSTS = []
 
 
 
@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'payments',
     'reports',
     'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -194,6 +196,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'df1z2rja5',
+    'API_KEY': '443616815825562',
+    'API_SECRET': '381UEmz9h2bNMnPTQMnpwOcpYeo'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
