@@ -38,7 +38,9 @@ class Vehicle(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='available')
     rentalPrice = models.DecimalField(max_digits=10, decimal_places=2)
     # image = models.ImageField(upload_to='vehicle_images/', blank=True, null=True)
-    image = CloudinaryField('image', blank=True, null=True)
+    # image = CloudinaryField('image', blank=True, null=True)
+    image = models.ImageField(upload_to='vehicle_images/', blank=True, null=True)
+
 
     def updateAvailability(self, status):
         self.status = status
