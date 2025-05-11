@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = ['https://drivenow-g8je.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['drivenow-g8je.onrender.com', 'localhost']
 
 # SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'fallback-secret-key')
 
