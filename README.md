@@ -1,8 +1,8 @@
-# Car Rental System
+# Drive NOW
 
 ## Description
 
-Car Rental System is a web application for car rentals, including a frontend built with **Angular** and a backend built with **Django**. The system allows users to:
+Drive NOW is a web application for car rentals, including a frontend built with **Angular** and a backend built with **Django**. The system allows users to:
 
 - View available cars for rent.
 - Book cars for specific dates.
